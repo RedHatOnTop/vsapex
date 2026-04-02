@@ -1,3 +1,41 @@
+# Apex — AI-Native IDE
+
+Apex is a fork of `microsoft/vscode` that inverts the traditional IDE paradigm: the agent conversation panel is the primary surface, and the code editor is a secondary, collapsible panel.
+
+## Upstream Merge Workflow
+
+This repository tracks `microsoft/vscode` upstream changes via the `apex/upstream-sync` branch.
+
+### Remotes
+
+| Remote | URL |
+|--------|-----|
+| `origin` | https://github.com/RedHatOnTop/vsapex.git |
+| `upstream` | https://github.com/microsoft/vscode.git |
+
+### Syncing upstream changes
+
+```bash
+# 1. Fetch latest upstream
+git fetch upstream
+
+# 2. Update the sync mirror branch
+git checkout apex/upstream-sync
+git merge upstream/main
+git push origin apex/upstream-sync
+
+# 3. Merge into main (resolve conflicts as needed)
+git checkout main
+git merge apex/upstream-sync
+```
+
+### Branch strategy
+
+- `main` — Apex development branch (all Apex-specific changes live here)
+- `apex/upstream-sync` — clean mirror of `microsoft/vscode` main; never commit Apex changes here
+
+---
+
 # Visual Studio Code - Open Source ("Code - OSS")
 [![Feature Requests](https://img.shields.io/github/issues/microsoft/vscode/feature-request.svg)](https://github.com/microsoft/vscode/issues?q=is%3Aopen+is%3Aissue+label%3Afeature-request+sort%3Areactions-%2B1-desc)
 [![Bugs](https://img.shields.io/github/issues/microsoft/vscode/bug.svg)](https://github.com/microsoft/vscode/issues?utf8=✓&q=is%3Aissue+is%3Aopen+label%3Abug)
